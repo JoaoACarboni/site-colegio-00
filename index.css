@@ -1,3 +1,8 @@
+/* ==========================================================
+   Apresentação das etapas – apresentacao.css
+   Mesma paleta do site: vermelho, amarelo, pêssego e cinza
+   ========================================================== */
+
 :root {
   --vermelho: #e10000;
   --vermelho-escuro: #b30000;
@@ -10,15 +15,16 @@
 
   --fonte-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --fonte-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --fonte-codigo: Consolas, "Courier New", monospace;
 
-  --largura: 1120px;
+  --largura: 960px;
 }
 
 *,
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -50,91 +56,14 @@ a { color: inherit; }
   margin-inline: auto;
 }
 
-.pular {
+.visualmente-oculto {
   position: absolute;
-  left: 1rem;
-  top: -4rem;
-  background: var(--amarelo);
-  padding: 0.6rem 1rem;
-  font-weight: 600;
-  z-index: 10;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-.pular:focus { top: 1rem; }
-
-/* ---------- Topo ---------- */
-.topo {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  background: var(--branco);
-  border-bottom: 4px solid var(--amarelo);
-}
-
-.topo__linha {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 0.6rem;
-}
-
-.marca {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-}
-
-/* Logo (quadrada, como o arquivo original).
-   A mesma classe serve para o <img> e para o espaço reservado. */
-.marca__logo {
-  display: block;
-  flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-}
-
-.marca__logo_footer {
-  display: block;
-  flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  border-radius: 50px;
-}
-
-
-
-/* Espaço reservado (aparece só enquanto a logo não foi inserida) */
-span.marca__logo {
-  display: grid;
-  place-items: center;
-  border: 2px dashed var(--cinza);
-  border-radius: 50%;
-  font-size: 0.8rem;
-  color: var(--cinza);
-}
-
-.marca__nome {
-  font-family: var(--fonte-titulo);
-  font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-}
-
-.menu { display: flex; gap: 0.25rem; }
-
-.menu a {
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 0.9rem;
-  border-radius: 999px;
-  transition: background-color 0.15s;
-}
-.menu a:hover { background: var(--creme); }
 
 /* ---------- Botões ---------- */
 .botao {
@@ -143,251 +72,166 @@ span.marca__logo {
   border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
-  border: 2px solid transparent;
   transition: transform 0.15s, background-color 0.15s;
 }
 .botao:hover { transform: translateY(-2px); }
 
-.botao--amarelo {
-  background: var(--amarelo);
-  color: var(--cinza-escuro);
-}
+.botao--amarelo { background: var(--amarelo); color: var(--cinza-escuro); }
 .botao--amarelo:hover { background: var(--pessego); }
 
-.botao--linha {
-  border-color: var(--cinza-escuro);
-  color: var(--cinza-escuro);
-}
-.botao--linha:hover { background: var(--cinza-escuro); color: var(--branco); }
+.botao--vermelho { background: var(--vermelho); color: var(--branco); }
+.botao--vermelho:hover { background: var(--vermelho-escuro); }
 
-/* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: clamp(3rem, 8vw, 6.5rem);
+/* ---------- Capa ---------- */
+.capa {
+  background: var(--creme);
+  border-bottom: 6px solid var(--amarelo);
+  padding-block: clamp(3rem, 8vw, 6rem);
 }
 
-.hero__grade {
+.capa__grade {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.4fr 0.6fr;
   align-items: center;
   gap: 2rem;
 }
 
-.hero__escola {
+.capa__contexto {
   font-weight: 600;
   color: var(--vermelho-escuro);
-  margin-bottom: 1.25rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.6rem, 6.5vw, 5rem);
-  font-weight: 800;
-  max-width: 13ch;
-}
-
-.hero__lead {
-  margin-top: 1.5rem;
-  max-width: 46ch;
-  font-size: 1.2rem;
-}
-
-.hero__acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
-
-/* Arte feita só com círculos, na paleta da logo */
-.hero__arte {
-  position: relative;
-  aspect-ratio: 1;
-  width: min(100%, 460px);
-  justify-self: center;
-}
-
-.hero__circulos {
-  position: absolute;
-  inset: 0;
-}
-
-/* Logo centralizada sobre os círculos */
-.marca__logo.hero__logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 58%;
-  height: 58%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-img.hero__logo {
-  background: var(--branco);
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 6px var(--branco);
-}
-
-span.hero__logo {
-  background: var(--branco);
-  font-size: 1rem;
-}
-
-.circulo, .ponto {
-  position: absolute;
-  border-radius: 50%;
-  display: block;
-}
-
-.circulo--amarelo  { background: var(--amarelo);  width: 72%; height: 72%; top: 6%;  right: 0; }
-.circulo--cinza    { background: var(--cinza);    width: 58%; height: 58%; bottom: 0; right: 10%; }
-.circulo--vermelho { background: var(--vermelho); width: 66%; height: 66%; top: 12%; left: 0; }
-.circulo--pessego  { background: var(--pessego);  width: 40%; height: 40%; top: 32%; left: 26%; mix-blend-mode: multiply; }
-
-.ponto--1 { background: var(--vermelho); width: 9%;  height: 9%;  top: 0;   left: 4%; }
-.ponto--2 { background: var(--amarelo);  width: 8%;  height: 8%;  bottom: 6%; left: 12%; }
-.ponto--3 { background: var(--vermelho); width: 5%;  height: 5%;  bottom: 20%; right: 0; }
-
-/* ---------- Sobre ---------- */
-.sobre {
-  background: var(--creme);
-  padding-block: clamp(3rem, 7vw, 5.5rem);
-}
-
-.sobre__grade {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: start;
-}
-
-.sobre h2 {
-  font-size: clamp(1.9rem, 4vw, 2.9rem);
-  margin-bottom: 1.25rem;
-  max-width: 18ch;
-}
-
-.sobre p { max-width: 60ch; }
-
-.fatos { margin: 0; display: grid; gap: 1rem; }
-
-.fatos div {
-  background: var(--branco);
-  border-left: 8px solid var(--vermelho);
-  padding: 1rem 1.25rem;
-  border-radius: 0 12px 12px 0;
-}
-.fatos div:nth-child(2) { border-left-color: var(--amarelo); }
-.fatos div:nth-child(3) { border-left-color: var(--cinza); }
-
-.fatos dt { font-weight: 600; }
-
-.fatos dd {
-  margin: 0.15rem 0 0;
-  color: #555;
-}
-.fatos div:first-child dd {
-  font-family: var(--fonte-titulo);
-  font-weight: 800;
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--vermelho);
-}
-
-/* ---------- Cursos ---------- */
-.cursos { padding-block: clamp(3rem, 7vw, 5.5rem); }
-
-.cursos h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
-
-.cursos__intro {
-  margin-top: 0.75rem;
-  max-width: 56ch;
-  color: #555;
-}
-
-.lista {
-  list-style: none;
-  margin: 2.5rem 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 2rem;
-}
-
-.curso {
-  --cor: var(--vermelho);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.25rem 0 1rem 1.25rem;
-  border-left: 8px solid var(--cor);
-  border-bottom: 1px solid #e6e6e6;
-}
-.curso--vermelho { --cor: var(--vermelho); }
-.curso--amarelo  { --cor: var(--amarelo); }
-.curso--pessego  { --cor: var(--pessego); }
-.curso--cinza    { --cor: var(--cinza); }
-
-.curso h3 { font-size: 1.4rem; margin-bottom: 0.35rem; }
-.curso p { color: #555; font-size: 1rem; }
-
-.etiquetas {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.35rem;
-  flex-shrink: 0;
-}
-
-.etiqueta {
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.2rem 0.7rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.etiqueta--integrado    { background: var(--vermelho); color: var(--branco); }
-.etiqueta--subsequente  { background: var(--amarelo);  color: var(--cinza-escuro); }
-
-/* ---------- Contato ---------- */
-.contato {
-  background: var(--vermelho);
-  color: var(--branco);
-  padding-block: clamp(3rem, 7vw, 5rem);
-}
-
-.contato__grade {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
-}
-
-.contato h2 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
   margin-bottom: 1rem;
+}
+
+.capa h1 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 800;
   max-width: 14ch;
 }
 
-.contato__dados {
-  font-style: normal;
-  display: grid;
-  gap: 1.1rem;
-  justify-items: start;
+.capa__lead {
+  margin: 1.25rem 0 2rem;
+  max-width: 44ch;
+  font-size: 1.2rem;
 }
 
-.contato__dados strong {
+.capa__logo {
+  justify-self: center;
+  width: min(100%, 240px);
+}
+
+.capa__logo img {
   display: block;
-  color: var(--amarelo);
-  font-weight: 600;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--branco);
+  box-shadow: 0 0 0 8px var(--branco);
 }
 
-.contato__dados a:not(.botao) { text-underline-offset: 3px; }
+/* ---------- Etapas (linha do tempo) ---------- */
+.etapas {
+  --lado: 4.5rem;
+  list-style: none;
+  margin: 0;
+  padding: clamp(3rem, 7vw, 5rem) 0;
+}
 
-.contato .botao--amarelo:hover { background: var(--branco); }
+.etapa {
+  --cor: var(--vermelho);
+  --cor-texto: var(--branco);
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--lado) 1fr;
+  gap: 1.5rem;
+  padding-bottom: 3.5rem;
+}
+.etapa--vermelho { --cor: var(--vermelho); --cor-texto: var(--branco); }
+.etapa--amarelo  { --cor: var(--amarelo);  --cor-texto: var(--cinza-escuro); }
+.etapa--cinza    { --cor: var(--cinza);    --cor-texto: var(--branco); }
+
+/* linha que liga uma etapa à seguinte */
+.etapa::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--lado) / 2 - 2px);
+  top: var(--lado);
+  bottom: 0;
+  width: 4px;
+  background: var(--cor);
+  opacity: 0.35;
+}
+.etapa:last-child { padding-bottom: 0; }
+.etapa:last-child::before { display: none; }
+
+.etapa__marca {
+  display: grid;
+  place-items: center;
+  width: var(--lado);
+  height: var(--lado);
+  border-radius: 50%;
+  background: var(--cor);
+  color: var(--cor-texto);
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.etapa__corpo { padding-top: 0.5rem; }
+
+.etapa h3 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+
+.etapa__corpo > p { margin-top: 0.85rem; max-width: 62ch; }
+
+.pontos {
+  margin: 1.25rem 0 0;
+  padding-left: 1.25rem;
+  max-width: 62ch;
+}
+.pontos li { margin-bottom: 0.4rem; }
+.pontos li::marker { color: var(--cor); }
+
+code {
+  font-family: var(--fonte-codigo);
+  font-size: 0.92em;
+  background: var(--creme);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.codigo {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--cinza-escuro);
+  color: #f2f2f2;
+  border-left: 8px solid var(--cor);
+  border-radius: 0 12px 12px 0;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.codigo code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* etapa ainda não pronta */
+.etapa--breve .etapa__marca {
+  background: var(--branco);
+  color: var(--cinza);
+  border: 3px dashed var(--cinza);
+}
+
+.etapa__aviso {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.25rem 0.9rem;
+  border: 2px dashed var(--cinza);
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--cinza);
+}
 
 /* ---------- Rodapé ---------- */
 .rodape {
@@ -405,31 +249,20 @@ span.hero__logo {
   gap: 1rem;
 }
 
-.rodape .marca__logo { width: 56px; height: 56px; }
-.rodape span.marca__logo { border-color: #9a9a9a; color: #9a9a9a; }
-.rodape .marca__nome { color: var(--branco); font-size: 1.15rem; }
+.rodape a { color: var(--amarelo); text-underline-offset: 3px; }
 
 /* ---------- Telas menores ---------- */
-@media (max-width: 860px) {
-  .hero__grade,
-  .sobre__grade,
-  .contato__grade { grid-template-columns: 1fr; }
+@media (max-width: 720px) {
+  .capa__grade { grid-template-columns: 1fr; }
+  .capa__logo { order: -1; width: 150px; justify-self: start; }
 
-  .hero__arte { width: min(80%, 340px); order: -1; }
-
-  .lista { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 520px) {
-  .marca__logo { width: 56px; height: 56px; }
-  .marca__nome { font-size: 1.1rem; }
-  .menu a { padding: 0.4rem 0.6rem; }
-  .curso { flex-direction: column; }
-  .etiquetas { flex-direction: row; align-items: flex-start; }
+  .etapas { --lado: 3.25rem; }
+  .etapa { gap: 1rem; }
+  .etapa__marca { font-size: 1.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .botao, .menu a { transition: none; }
+  .botao { transition: none; }
   .botao:hover { transform: none; }
 }

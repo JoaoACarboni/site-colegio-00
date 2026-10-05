@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CEEP Assaí – Centro Estadual de Educação Profissional</title>
-  <meta name="description" content="CEEP Professora Maria Lydia Cescato Bomtempo, em Assaí (PR): cursos técnicos integrados ao Ensino Médio e subsequentes.">
+  <title>Como construímos o site do CEEP Assaí</title>
+  <meta name="description" content="Apresentação das etapas de desenvolvimento do site do CEEP Assaí: do HTML puro ao visual final com CSS.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,193 +13,165 @@
 </head>
 <body>
 
-  <a class="pular" href="#cursos">Ir para os cursos</a>
+  <header class="capa">
+    <div class="container capa__grade">
+      <div>
+        <p class="capa__contexto">Projeto do site do CEEP Assaí</p>
+        <h1>Como construímos o site, etapa por etapa</h1>
+        <p class="capa__lead">Do HTML puro ao visual final. Em cada etapa você pode abrir a página e ver exatamente o que mudou.</p>
+        <a class="botao botao--amarelo" href="#etapas">Começar pela etapa 1</a>
+      </div>
 
-  <header class="topo">
-    <div class="container topo__linha">
-      <a class="marca" href="#inicio" aria-label="CEEP Assaí – início">
-        <img class="marca__logo" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
-        <span class="marca__nome">CEEP Assaí</span>
-      </a>
-
-      <nav class="menu" aria-label="Principal">
-        <a href="#sobre">O colégio</a>
-        <a href="#cursos">Cursos</a>
-        <a href="#contato">Contato</a>
-      </nav>
+      <div class="capa__logo">
+        <img src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
+      </div>
     </div>
   </header>
 
-  <main id="inicio">
+  <main>
+    <section class="container" id="etapas" aria-labelledby="titulo-etapas">
+      <h2 id="titulo-etapas" class="visualmente-oculto">Etapas de desenvolvimento</h2>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero__grade">
-        <div class="hero__texto">
-          <p class="hero__escola">Centro Estadual de Educação Profissional<br>Professora Maria Lydia Cescato Bomtempo</p>
-          <h1>Ensino Médio e profissão, lado a lado.</h1>
-          <p class="hero__lead">Escola pública de Assaí, no Paraná, com nove cursos técnicos para você sair pronto para estudar, trabalhar ou as duas coisas.</p>
-          <div class="hero__acoes">
-            <a class="botao botao--amarelo" href="#cursos">Ver os cursos</a>
-            <a class="botao botao--linha" href="#contato">Como chegar</a>
+      <ol class="etapas">
+
+        <!-- ETAPA 1 -->
+        <li class="etapa etapa--vermelho">
+          <div class="etapa__marca" aria-hidden="true">1</div>
+          <div class="etapa__corpo">
+            <h3>HTML: a estrutura e o conteúdo</h3>
+            <p>Primeiro escrevemos só o HTML. Ele define o que existe na página: o cabeçalho, o menu, os nove cursos, os dados de contato e o rodapé. Sem CSS, tudo aparece com o visual padrão do navegador, e é isso que mostra o papel do HTML.</p>
+
+            <ul class="pontos">
+              <li>Títulos <code>&lt;h1&gt;</code> a <code>&lt;h3&gt;</code> organizam a leitura.</li>
+              <li>Listas <code>&lt;ul&gt;</code> guardam os cursos.</li>
+              <li>Tags como <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> e <code>&lt;footer&gt;</code> dão sentido a cada parte.</li>
+            </ul>
+
+<pre class="codigo" aria-label="Exemplo de HTML"><code>&lt;section id="cursos"&gt;
+  &lt;h2&gt;Cursos técnicos&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;h3&gt;Desenvolvimento de Sistemas&lt;/h3&gt;
+      &lt;p&gt;Programação, banco de dados...&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+
+            <a class="botao botao--vermelho" href="etapa-1-html.html">Ver a página só com HTML</a>
           </div>
-        </div>
+        </li>
 
-        <div class="hero__arte">
-          <div class="hero__circulos" aria-hidden="true">
-            <span class="circulo circulo--amarelo"></span>
-            <span class="circulo circulo--cinza"></span>
-            <span class="circulo circulo--vermelho"></span>
-            <span class="circulo circulo--pessego"></span>
-            <span class="ponto ponto--1"></span>
-            <span class="ponto ponto--2"></span>
-            <span class="ponto ponto--3"></span>
+        <!-- ETAPA 2 -->
+        <li class="etapa etapa--amarelo">
+          <div class="etapa__marca" aria-hidden="true">2</div>
+          <div class="etapa__corpo">
+            <h3>CSS: cores, tipografia e layout</h3>
+            <p>Depois ligamos o CSS ao mesmo HTML, sem mudar o conteúdo. Ele aplica a paleta da logo, escolhe as fontes, organiza as seções em colunas e adapta a página para o celular.</p>
+
+            <ul class="pontos">
+              <li>Cores da logo guardadas em variáveis: vermelho, amarelo, pêssego e cinza.</li>
+              <li>Layout com <code>grid</code> e <code>flex</code>.</li>
+              <li>Regras <code>@media</code> para telas pequenas.</li>
+            </ul>
+
+<pre class="codigo" aria-label="Exemplo de CSS"><code>:root {
+  --vermelho: #e10000;
+  --amarelo: #ffd400;
+  --pessego: #f8bd6b;
+  --cinza: #808080;
+}
+
+.curso {
+  border-left: 8px solid var(--vermelho);
+}</code></pre>
+
+            <a class="botao botao--amarelo" href="index.html">Ver a página com CSS</a>
           </div>
-          <img class="marca__logo hero__logo" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
-        </div>
-      </div>
-    </section>
+        </li>
 
-    <!-- SOBRE -->
-    <section class="sobre" id="sobre">
-      <div class="container sobre__grade">
-        <div>
-          <h2>Uma escola pública para quem quer aprender fazendo</h2>
-          <p>O CEEP Assaí oferece educação profissional pública e gratuita. Nos cursos integrados, você cursa o Ensino Médio e a formação técnica ao mesmo tempo, na mesma escola. Nos cursos subsequentes, quem já concluiu o Ensino Médio faz somente a parte técnica.</p>
-        </div>
+        <!-- ETAPA 3 -->
+        <li class="etapa etapa--vermelho">
+          <div class="etapa__marca" aria-hidden="true">3</div>
+          <div class="etapa__corpo">
+            <h3>CSS: a pseudoclasse <code>:hover</code></h3>
+            <p>Com a estrutura e o visual prontos, vale parar numa funcionalidade do CSS por vez. A primeira é o <code>:hover</code>: ele aplica um estilo só enquanto o mouse está sobre o elemento, e some assim que o mouse sai.</p>
 
-        <dl class="fatos">
-          <div>
-            <dt>Cursos técnicos</dt>
-            <dd>9</dd>
+            <ul class="pontos">
+              <li>Botões, links e cartões que reagem ao mouse.</li>
+              <li>Uso de <code>transition</code> para o efeito ficar suave.</li>
+              <li>O que muda no toque, em telas de celular.</li>
+            </ul>
+
+<pre class="codigo" aria-label="Exemplo de :hover"><code>.botao {
+  background: #e10000;
+  transition: background-color .2s;
+}
+
+.botao:hover {
+  background: #b30000;
+}</code></pre>
+
+            <a class="botao botao--vermelho" href="hover-demo.html">Ver a página do :hover</a>
           </div>
-          <div>
-            <dt>Integrado ao Ensino Médio</dt>
-            <dd>Para quem está saindo do Ensino Fundamental</dd>
+        </li>
+
+        <!-- ETAPA 4 -->
+        <li class="etapa etapa--amarelo">
+          <div class="etapa__marca" aria-hidden="true">4</div>
+          <div class="etapa__corpo">
+            <h3>CSS: o <code>box model</code></h3>
+            <p>Outra base do CSS é o box model: todo elemento é uma caixa com quatro camadas — content, padding, border e margin. Entender essas camadas explica por que um elemento ocupa mais espaço do que o <code>width</code> definido, e como corrigir isso.</p>
+
+            <ul class="pontos">
+              <li>As quatro camadas, de dentro para fora.</li>
+              <li>Controles para testar padding, border e margin ao vivo.</li>
+              <li>A diferença entre <code>content-box</code> e <code>border-box</code>.</li>
+            </ul>
+
+<pre class="codigo" aria-label="Exemplo de box model"><code>.caixa {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 4px solid;
+  margin: 20px;
+}</code></pre>
+
+            <a class="botao botao--amarelo" href="box-model-demo.html">Ver a página do box model</a>
           </div>
-          <div>
-            <dt>Subsequente</dt>
-            <dd>Para quem já terminou o Ensino Médio</dd>
+        </li>
+
+        <!-- ETAPA 5 -->
+        <li class="etapa etapa--cinza">
+          <div class="etapa__marca" aria-hidden="true">5</div>
+          <div class="etapa__corpo">
+            <h3>JavaScript básico</h3>
+            <p>Por fim, o JavaScript dá comportamento à página: ele reage a cliques, muda o conteúdo na hora e toma decisões, coisas que HTML e CSS sozinhos não fazem.</p>
+
+            <ul class="pontos">
+              <li>Eventos, como <code>click</code>, e funções.</li>
+              <li>Variáveis com <code>let</code> e <code>const</code>.</li>
+              <li>Manipulação do DOM: ler e trocar o conteúdo da página.</li>
+            </ul>
+
+<pre class="codigo" aria-label="Exemplo de JavaScript"><code>const botao = document.getElementById('botao');
+
+botao.addEventListener('click', () =&gt; {
+  botao.textContent = 'Clicado!';
+});</code></pre>
+
+            <a class="botao botao--vermelho" href="javascript-demo.html">Ver a página de JavaScript</a>
           </div>
-        </dl>
-      </div>
-    </section>
+        </li>
 
-    <!-- CURSOS -->
-    <section class="cursos" id="cursos">
-      <div class="container">
-        <h2>Cursos técnicos</h2>
-        <p class="cursos__intro">Escolha o curso pela área em que você quer trabalhar. A etiqueta mostra se ele é integrado ao Ensino Médio ou subsequente.</p>
-
-        <ul class="lista">
-          <li class="curso curso--vermelho">
-            <div class="curso__info">
-              <h3>Desenvolvimento de Sistemas</h3>
-              <p>Programação, banco de dados e criação de sites e aplicativos.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
-          </li>
-
-          <li class="curso curso--amarelo">
-            <div class="curso__info">
-              <h3>Inteligência Artificial e Dados</h3>
-              <p>Análise de dados, automação e uso de inteligência artificial.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
-          </li>
-
-          <li class="curso curso--pessego">
-            <div class="curso__info">
-              <h3>Mecânica</h3>
-              <p>Máquinas, processos de fabricação e manutenção industrial.</p>
-            </div>
-            <span class="etiquetas">
-              <span class="etiqueta etiqueta--integrado">Integrado</span>
-              <span class="etiqueta etiqueta--subsequente">Subsequente</span>
-            </span>
-          </li>
-
-          <li class="curso curso--cinza">
-            <div class="curso__info">
-              <h3>Eletroeletrônica</h3>
-              <p>Circuitos, instalações elétricas e sistemas eletrônicos.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span>
-            <span class="etiquetas"><span class="etiqueta etiqueta--subsequente">Subsequente</span>
-          </li>
-
-          <li class="curso curso--vermelho">
-            <div class="curso__info">
-              <h3>Edificações</h3>
-              <p>Projetos, materiais e acompanhamento de obras.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
-          </li>
-
-          <li class="curso curso--amarelo">
-            <div class="curso__info">
-              <h3>Enfermagem</h3>
-              <p>Cuidado com o paciente e práticas de saúde.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
-          </li>
-
-          <li class="curso curso--pessego">
-            <div class="curso__info">
-              <h3>Administração</h3>
-              <p>Gestão de empresas, finanças e rotinas administrativas.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--subsequente">Subsequente</span></span>
-          </li>
-
-          <li class="curso curso--cinza">
-            <div class="curso__info">
-              <h3>Segurança do Trabalho</h3>
-              <p>Prevenção de acidentes e cuidado com a saúde de quem trabalha.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--subsequente">Subsequente</span></span>
-          </li>
-
-          <li class="curso curso--vermelho">
-            <div class="curso__info">
-              <h3>Agronegócio</h3>
-              <p>Produção agropecuária, gestão rural e cadeia do agronegócio.</p>
-            </div>
-            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="contato" id="contato">
-      <div class="container contato__grade">
-        <div>
-          <h2>Venha conhecer a escola</h2>
-          <p>Para informações sobre matrícula e vagas, fale com a secretaria.</p>
-        </div>
-
-        <address class="contato__dados">
-          <p><strong>Endereço</strong>R. Edgar Bardal, s/n<br>Assaí, PR, 86220-000</p>
-          <p><strong>Telefone</strong>(43) 9699-7826</p>
-          <a class="botao botao--amarelo" href="https://www.google.com/maps/search/?api=1&query=CEEP+Maria+Lydia+Cescato+Bomtempo+Assa%C3%AD+PR" target="_blank" rel="noopener">Abrir no mapa</a>
-        </address>
-      </div>
+      </ol>
     </section>
   </main>
 
   <footer class="rodape">
     <div class="container rodape__linha">
-      <div class="marca marca--rodape">
-        <img class="marca__logo_footer" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
-        <span class="marca__nome">CEEP Assaí</span>
-        
-      </div>
       <p>Centro Estadual de Educação Profissional Professora Maria Lydia Cescato Bomtempo · Assaí, Paraná</p>
-            <a class="voltar" href="apresentacao.html">← Voltar ao início</a>
-
+      <a href="index.html">Ir para o site</a>
     </div>
-    
   </footer>
 
 </body>

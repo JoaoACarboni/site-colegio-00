@@ -1,0 +1,435 @@
+:root {
+  --vermelho: #e10000;
+  --vermelho-escuro: #b30000;
+  --amarelo: #ffd400;
+  --pessego: #f8bd6b;
+  --cinza: #808080;
+  --cinza-escuro: #2e2e2e;
+  --creme: #fff8e3;
+  --branco: #ffffff;
+
+  --fonte-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+
+  --largura: 1120px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--cinza-escuro);
+  background: var(--branco);
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+p { margin: 0; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--cinza-escuro);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--largura));
+  margin-inline: auto;
+}
+
+.pular {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--amarelo);
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  z-index: 10;
+}
+.pular:focus { top: 1rem; }
+
+/* ---------- Topo ---------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--branco);
+  border-bottom: 4px solid var(--amarelo);
+}
+
+.topo__linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.6rem;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+/* Logo (quadrada, como o arquivo original).
+   A mesma classe serve para o <img> e para o espaço reservado. */
+.marca__logo {
+  display: block;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.marca__logo_footer {
+  display: block;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 50px;
+}
+
+
+
+/* Espaço reservado (aparece só enquanto a logo não foi inserida) */
+span.marca__logo {
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--cinza);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: var(--cinza);
+}
+
+.marca__nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.menu { display: flex; gap: 0.25rem; }
+
+.menu a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  transition: background-color 0.15s;
+}
+.menu a:hover { background: var(--creme); }
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 0.15s, background-color 0.15s;
+}
+.botao:hover { transform: translateY(-2px); }
+
+.botao--amarelo {
+  background: var(--amarelo);
+  color: var(--cinza-escuro);
+}
+.botao--amarelo:hover { background: var(--pessego); }
+
+.botao--linha {
+  border-color: var(--cinza-escuro);
+  color: var(--cinza-escuro);
+}
+.botao--linha:hover { background: var(--cinza-escuro); color: var(--branco); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 8vw, 6.5rem);
+}
+
+.hero__grade {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero__escola {
+  font-weight: 600;
+  color: var(--vermelho-escuro);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  font-weight: 800;
+  max-width: 13ch;
+}
+
+.hero__lead {
+  margin-top: 1.5rem;
+  max-width: 46ch;
+  font-size: 1.2rem;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Arte feita só com círculos, na paleta da logo */
+.hero__arte {
+  position: relative;
+  aspect-ratio: 1;
+  width: min(100%, 460px);
+  justify-self: center;
+}
+
+.hero__circulos {
+  position: absolute;
+  inset: 0;
+}
+
+/* Logo centralizada sobre os círculos */
+.marca__logo.hero__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58%;
+  height: 58%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+img.hero__logo {
+  background: var(--branco);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 6px var(--branco);
+}
+
+span.hero__logo {
+  background: var(--branco);
+  font-size: 1rem;
+}
+
+.circulo, .ponto {
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+}
+
+.circulo--amarelo  { background: var(--amarelo);  width: 72%; height: 72%; top: 6%;  right: 0; }
+.circulo--cinza    { background: var(--cinza);    width: 58%; height: 58%; bottom: 0; right: 10%; }
+.circulo--vermelho { background: var(--vermelho); width: 66%; height: 66%; top: 12%; left: 0; }
+.circulo--pessego  { background: var(--pessego);  width: 40%; height: 40%; top: 32%; left: 26%; mix-blend-mode: multiply; }
+
+.ponto--1 { background: var(--vermelho); width: 9%;  height: 9%;  top: 0;   left: 4%; }
+.ponto--2 { background: var(--amarelo);  width: 8%;  height: 8%;  bottom: 6%; left: 12%; }
+.ponto--3 { background: var(--vermelho); width: 5%;  height: 5%;  bottom: 20%; right: 0; }
+
+/* ---------- Sobre ---------- */
+.sobre {
+  background: var(--creme);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.sobre__grade {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.sobre h2 {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  margin-bottom: 1.25rem;
+  max-width: 18ch;
+}
+
+.sobre p { max-width: 60ch; }
+
+.fatos { margin: 0; display: grid; gap: 1rem; }
+
+.fatos div {
+  background: var(--branco);
+  border-left: 8px solid var(--vermelho);
+  padding: 1rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+}
+.fatos div:nth-child(2) { border-left-color: var(--amarelo); }
+.fatos div:nth-child(3) { border-left-color: var(--cinza); }
+
+.fatos dt { font-weight: 600; }
+
+.fatos dd {
+  margin: 0.15rem 0 0;
+  color: #555;
+}
+.fatos div:first-child dd {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--vermelho);
+}
+
+/* ---------- Cursos ---------- */
+.cursos { padding-block: clamp(3rem, 7vw, 5.5rem); }
+
+.cursos h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+
+.cursos__intro {
+  margin-top: 0.75rem;
+  max-width: 56ch;
+  color: #555;
+}
+
+.lista {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 2rem;
+}
+
+.curso {
+  --cor: var(--vermelho);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.25rem 0 1rem 1.25rem;
+  border-left: 8px solid var(--cor);
+  border-bottom: 1px solid #e6e6e6;
+}
+.curso--vermelho { --cor: var(--vermelho); }
+.curso--amarelo  { --cor: var(--amarelo); }
+.curso--pessego  { --cor: var(--pessego); }
+.curso--cinza    { --cor: var(--cinza); }
+
+.curso h3 { font-size: 1.4rem; margin-bottom: 0.35rem; }
+.curso p { color: #555; font-size: 1rem; }
+
+.etiquetas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.etiqueta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.etiqueta--integrado    { background: var(--vermelho); color: var(--branco); }
+.etiqueta--subsequente  { background: var(--amarelo);  color: var(--cinza-escuro); }
+
+/* ---------- Contato ---------- */
+.contato {
+  background: var(--vermelho);
+  color: var(--branco);
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.contato__grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.contato h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin-bottom: 1rem;
+  max-width: 14ch;
+}
+
+.contato__dados {
+  font-style: normal;
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+}
+
+.contato__dados strong {
+  display: block;
+  color: var(--amarelo);
+  font-weight: 600;
+}
+
+.contato__dados a:not(.botao) { text-underline-offset: 3px; }
+
+.contato .botao--amarelo:hover { background: var(--branco); }
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  background: var(--cinza-escuro);
+  color: #d9d9d9;
+  padding-block: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.rodape__linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rodape .marca__logo { width: 56px; height: 56px; }
+.rodape span.marca__logo { border-color: #9a9a9a; color: #9a9a9a; }
+.rodape .marca__nome { color: var(--branco); font-size: 1.15rem; }
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 860px) {
+  .hero__grade,
+  .sobre__grade,
+  .contato__grade { grid-template-columns: 1fr; }
+
+  .hero__arte { width: min(80%, 340px); order: -1; }
+
+  .lista { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .marca__logo { width: 56px; height: 56px; }
+  .marca__nome { font-size: 1.1rem; }
+  .menu a { padding: 0.4rem 0.6rem; }
+  .curso { flex-direction: column; }
+  .etiquetas { flex-direction: row; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .botao, .menu a { transition: none; }
+  .botao:hover { transform: none; }
+}
