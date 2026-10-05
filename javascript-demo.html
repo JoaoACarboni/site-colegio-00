@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript básico – demonstração</title>
+  <meta name="description" content="Página de demonstração de JavaScript básico: variáveis, eventos, funções e manipulação do DOM, com exemplos ao vivo e código.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="javascript-demo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container">
+      <a class="voltar" href="apresentacao.html">← Voltar ao início</a>
+      <p class="topo__contexto">JavaScript na prática</p>
+      <h1>JavaScript básico</h1>
+      <p class="topo__lead">Enquanto o CSS cuida da aparência, o JavaScript dá comportamento à página: ele reage a cliques, muda o conteúdo e toma decisões. Teste cada exemplo abaixo.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="explicacao">
+      <h2>O que é</h2>
+      <p>JavaScript é a linguagem de programação que roda no navegador. Um script "escuta" eventos — como um clique — e, quando o evento acontece, executa um código que pode ler e alterar o próprio HTML da página.</p>
+<pre class="codigo"><code>elemento.addEventListener('click', function () {
+  // código que roda quando o elemento é clicado
+});</code></pre>
+    </section>
+
+    <section class="exemplos" aria-labelledby="titulo-exemplos">
+      <h2 id="titulo-exemplos">Exemplos</h2>
+
+      <ul class="grade">
+
+        <!-- 1: trocar texto -->
+        <li class="exemplo">
+          <h3>1. Trocar o texto de um elemento</h3>
+          <div class="palco">
+            <p id="saudacao">Clique no botão abaixo</p>
+            <button class="demo-botao" id="botaoSaudacao" type="button">Clicar aqui</button>
+          </div>
+<pre class="codigo"><code>const saudacao = document.getElementById('saudacao');
+const botao = document.getElementById('botaoSaudacao');
+
+botao.addEventListener('click', () =&gt; {
+  saudacao.textContent = 'Olá! O JavaScript mudou este texto.';
+});</code></pre>
+        </li>
+
+        <!-- 2: contador -->
+        <li class="exemplo">
+          <h3>2. Contador com uma variável</h3>
+          <div class="palco">
+            <p class="contador__valor" id="valorContador">0</p>
+            <div class="contador__botoes">
+              <button class="demo-botao demo-botao--secundario" id="botaoMenos" type="button">−</button>
+              <button class="demo-botao" id="botaoMais" type="button">+</button>
+            </div>
+          </div>
+<pre class="codigo"><code>let contador = 0;
+const valor = document.getElementById('valorContador');
+
+botaoMais.addEventListener('click', () =&gt; {
+  contador = contador + 1;
+  valor.textContent = contador;
+});</code></pre>
+        </li>
+
+        <!-- 3: mostrar/esconder (toggle de classe) -->
+        <li class="exemplo">
+          <h3>3. Mostrar e esconder (toggle de classe)</h3>
+          <div class="palco">
+            <button class="demo-botao" id="botaoAlternar" type="button">Mostrar detalhes</button>
+            <p class="detalhe oculto" id="detalhe">Este parágrafo estava escondido com a classe <code>.oculto</code>.</p>
+          </div>
+<pre class="codigo"><code>const detalhe = document.getElementById('detalhe');
+
+botaoAlternar.addEventListener('click', () =&gt; {
+  detalhe.classList.toggle('oculto');
+});</code></pre>
+        </li>
+
+        <!-- 4: condicional (validação simples) -->
+        <li class="exemplo">
+          <h3>4. Decisão com <code>if</code></h3>
+          <div class="palco">
+            <label class="campo" for="campoIdade">Digite uma idade:</label>
+            <input class="demo-input" id="campoIdade" type="number" min="0" placeholder="ex: 16">
+            <button class="demo-botao" id="botaoVerificar" type="button">Verificar</button>
+            <p class="resultado" id="resultadoIdade"></p>
+          </div>
+<pre class="codigo"><code>const idade = Number(campoIdade.value);
+
+if (idade &gt;= 18) {
+  resultado.textContent = 'Maior de idade';
+} else {
+  resultado.textContent = 'Menor de idade';
+}</code></pre>
+        </li>
+
+        <!-- 5: função + array (cor aleatória) -->
+        <li class="exemplo">
+          <h3>5. Função que escolhe um item de um array</h3>
+          <div class="palco">
+            <div class="amostra" id="amostraCor"></div>
+            <button class="demo-botao" id="botaoCor" type="button">Sortear cor</button>
+          </div>
+<pre class="codigo"><code>const cores = ['#e10000', '#ffd400', '#f8bd6b', '#808080'];
+
+function sortearCor(lista) {
+  const indice = Math.floor(Math.random() * lista.length);
+  return lista[indice];
+}
+
+amostra.style.background = sortearCor(cores);</code></pre>
+        </li>
+
+        <!-- 6: lista dinâmica -->
+        <li class="exemplo">
+          <h3>6. Adicionar itens a uma lista</h3>
+          <div class="palco">
+            <div class="adicionar-item">
+              <input class="demo-input" id="campoItem" type="text" placeholder="nome do curso">
+              <button class="demo-botao" id="botaoAdicionar" type="button">Adicionar</button>
+            </div>
+            <ul class="lista-dinamica" id="listaCursos">
+              <li>Desenvolvimento de Sistemas</li>
+            </ul>
+          </div>
+<pre class="codigo"><code>const novoItem = document.createElement('li');
+novoItem.textContent = campoItem.value;
+listaCursos.appendChild(novoItem);</code></pre>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="dica">
+      <h2>Boas práticas</h2>
+      <ul>
+        <li>Use <code>const</code> para valores que não vão mudar e <code>let</code> para os que mudam. Evite <code>var</code>.</li>
+        <li>Separe o JavaScript do HTML sempre que possível, em um arquivo <code>.js</code> próprio, à medida que o código cresce.</li>
+        <li>Abra o console do navegador (F12 → Console) para ver mensagens de erro e testar trechos de código.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Exemplo de material de aula · CEEP Assaí</p>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Trocar texto
+    document.getElementById('botaoSaudacao').addEventListener('click', () => {
+      document.getElementById('saudacao').textContent = 'Olá! O JavaScript mudou este texto.';
+    });
+
+    // 2. Contador
+    let contador = 0;
+    const valorContador = document.getElementById('valorContador');
+    document.getElementById('botaoMais').addEventListener('click', () => {
+      contador += 1;
+      valorContador.textContent = contador;
+    });
+    document.getElementById('botaoMenos').addEventListener('click', () => {
+      contador -= 1;
+      valorContador.textContent = contador;
+    });
+
+    // 3. Mostrar/esconder
+    document.getElementById('botaoAlternar').addEventListener('click', (evento) => {
+      const detalhe = document.getElementById('detalhe');
+      detalhe.classList.toggle('oculto');
+      evento.target.textContent = detalhe.classList.contains('oculto')
+        ? 'Mostrar detalhes'
+        : 'Esconder detalhes';
+    });
+
+    // 4. Condicional
+    document.getElementById('botaoVerificar').addEventListener('click', () => {
+      const campoIdade = document.getElementById('campoIdade');
+      const resultado = document.getElementById('resultadoIdade');
+      const idade = Number(campoIdade.value);
+
+      if (campoIdade.value === '') {
+        resultado.textContent = 'Digite um número primeiro.';
+      } else if (idade >= 18) {
+        resultado.textContent = 'Maior de idade';
+      } else {
+        resultado.textContent = 'Menor de idade';
+      }
+    });
+
+    // 5. Cor aleatória
+    const cores = ['#e10000', '#ffd400', '#f8bd6b', '#808080'];
+    function sortearCor(lista) {
+      const indice = Math.floor(Math.random() * lista.length);
+      return lista[indice];
+    }
+    const amostraCor = document.getElementById('amostraCor');
+    amostraCor.style.background = cores[0];
+    document.getElementById('botaoCor').addEventListener('click', () => {
+      amostraCor.style.background = sortearCor(cores);
+    });
+
+    // 6. Lista dinâmica
+    document.getElementById('botaoAdicionar').addEventListener('click', () => {
+      const campoItem = document.getElementById('campoItem');
+      if (campoItem.value.trim() === '') return;
+
+      const novoItem = document.createElement('li');
+      novoItem.textContent = campoItem.value;
+      document.getElementById('listaCursos').appendChild(novoItem);
+      campoItem.value = '';
+    });
+  </script>
+
+</body>
+</html>

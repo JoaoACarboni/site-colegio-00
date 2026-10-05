@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS :hover – demonstração</title>
+  <meta name="description" content="Página de demonstração da pseudoclasse :hover em CSS, com exemplos ao vivo e o código de cada um.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hover-demo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container">
+      <a class="voltar" href="apresentacao.html">← Voltar ao início</a>
+      <p class="topo__contexto">CSS na prática</p>
+      <h1>A pseudoclasse <code>:hover</code></h1>
+      <p class="topo__lead">Passe o mouse sobre cada exemplo abaixo para ver o efeito acontecer. No celular, toque no elemento.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="explicacao">
+      <h2>O que é</h2>
+      <p><code>:hover</code> é uma <strong>pseudoclasse</strong>: ela aplica um estilo a um elemento somente enquanto o cursor do mouse está sobre ele. Assim que o mouse sai, o elemento volta ao estilo normal.</p>
+<pre class="codigo"><code>seletor:hover {
+  propriedade: valor;
+}</code></pre>
+      <p>É muito usada para dar uma resposta visual antes do clique: botões, links, cartões e menus.</p>
+    </section>
+
+    <section class="exemplos" aria-labelledby="titulo-exemplos">
+      <h2 id="titulo-exemplos">Exemplos</h2>
+
+      <ul class="grade">
+
+        <!-- 1: botão muda de cor -->
+        <li class="exemplo">
+          <h3>1. Botão muda de cor</h3>
+          <div class="palco">
+            <button class="demo demo-botao" type="button">Passe o mouse</button>
+          </div>
+<pre class="codigo"><code>.botao {
+  background: #e10000;
+  transition: background-color .2s;
+}
+
+.botao:hover {
+  background: #b30000;
+}</code></pre>
+        </li>
+
+        <!-- 2: link sublinha -->
+        <li class="exemplo">
+          <h3>2. Link ganha sublinhado</h3>
+          <div class="palco">
+            <a class="demo demo-link" href="#">Este é um link de exemplo</a>
+          </div>
+<pre class="codigo"><code>a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}</code></pre>
+        </li>
+
+        <!-- 3: cartão levanta -->
+        <li class="exemplo">
+          <h3>3. Cartão "levanta" e ganha sombra</h3>
+          <div class="palco">
+            <div class="demo demo-cartao">
+              <strong>Curso técnico</strong>
+              <span>Passe o mouse aqui</span>
+            </div>
+          </div>
+<pre class="codigo"><code>.cartao {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.cartao:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 24px rgba(0,0,0,.18);
+}</code></pre>
+        </li>
+
+        <!-- 4: imagem/overlay -->
+        <li class="exemplo">
+          <h3>4. Legenda aparece sobre a imagem</h3>
+          <div class="palco">
+            <div class="demo demo-imagem">
+              <div class="demo-imagem__cor" aria-hidden="true"></div>
+              <div class="demo-imagem__legenda">Legenda que aparece no hover</div>
+            </div>
+          </div>
+<pre class="codigo"><code>.imagem .legenda {
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.imagem:hover .legenda {
+  opacity: 1;
+}</code></pre>
+        </li>
+
+        <!-- 5: item de menu -->
+        <li class="exemplo">
+          <h3>5. Item de menu com barra lateral</h3>
+          <div class="palco">
+            <nav class="demo demo-menu" aria-label="Exemplo de menu">
+              <a href="#">Início</a>
+              <a href="#">Cursos</a>
+              <a href="#">Contato</a>
+            </nav>
+          </div>
+<pre class="codigo"><code>.menu a {
+  border-left: 4px solid transparent;
+}
+
+.menu a:hover {
+  border-left-color: #ffd400;
+  background: #fff8e3;
+}</code></pre>
+        </li>
+
+        <!-- 6: escala de ícone -->
+        <li class="exemplo">
+          <h3>6. Ícone aumenta de tamanho</h3>
+          <div class="palco">
+            <span class="demo demo-icone" role="img" aria-label="Estrela">★</span>
+          </div>
+<pre class="codigo"><code>.icone {
+  display: inline-block;
+  transition: transform .2s;
+}
+
+.icone:hover {
+  transform: scale(1.4) rotate(-10deg);
+}</code></pre>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="dica">
+      <h2>Boas práticas</h2>
+      <ul>
+        <li>Use <code>transition</code> para o efeito acontecer suavemente, em vez de trocar o estilo de uma vez.</li>
+        <li><code>:hover</code> não funciona bem em celulares, porque não há cursor. Para quem usa toque, pense também em <code>:focus</code> e em um estado "ativo" por toque.</li>
+        <li>Evite depender só do hover para mostrar uma informação importante, porque ela fica escondida até o usuário passar o mouse.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Exemplo de material de aula · CEEP Assaí</p>
+    </div>
+  </footer>
+
+</body>
+</html>

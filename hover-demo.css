@@ -1,0 +1,262 @@
+/* ==========================================================
+   Demonstração do :hover – hover-demo.css
+   ========================================================== */
+
+:root {
+  --vermelho: #e10000;
+  --vermelho-escuro: #b30000;
+  --amarelo: #ffd400;
+  --pessego: #f8bd6b;
+  --cinza: #808080;
+  --cinza-escuro: #2e2e2e;
+  --creme: #fff8e3;
+  --branco: #ffffff;
+
+  --fonte-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --fonte-codigo: Consolas, "Courier New", monospace;
+
+  --largura: 1000px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--cinza-escuro);
+  background: var(--branco);
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+}
+
+p { margin: 0 0 0.75rem; }
+p:last-child { margin-bottom: 0; }
+
+.container {
+  width: min(100% - 2.5rem, var(--largura));
+  margin-inline: auto;
+}
+
+code {
+  font-family: var(--fonte-codigo);
+  font-size: 0.92em;
+  background: var(--creme);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---------- Topo ---------- */
+.topo {
+  background: var(--creme);
+  border-bottom: 6px solid var(--amarelo);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.topo__contexto {
+  font-weight: 600;
+  color: var(--vermelho-escuro);
+}
+
+.voltar {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--branco);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.voltar:hover { background: var(--amarelo); transform: translateX(-3px); }
+
+.topo h1 {
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+}
+.topo h1 code {
+  font-family: var(--fonte-codigo);
+  background: none;
+  padding: 0;
+  color: var(--vermelho);
+}
+
+.topo__lead {
+  max-width: 56ch;
+  font-size: 1.15rem;
+  margin-top: 0.75rem;
+}
+
+main { padding-block: clamp(2.5rem, 6vw, 4rem); }
+
+.explicacao, .dica { max-width: 68ch; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+
+h2 { font-size: clamp(1.6rem, 3vw, 2rem); margin-bottom: 1rem; }
+
+.codigo {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--cinza-escuro);
+  color: #f2f2f2;
+  border-left: 8px solid var(--vermelho);
+  border-radius: 0 12px 12px 0;
+  overflow-x: auto;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.codigo code { background: none; padding: 0; font-size: inherit; }
+
+.dica ul { margin: 0; padding-left: 1.25rem; max-width: 64ch; }
+.dica li { margin-bottom: 0.5rem; }
+
+/* ---------- Grade de exemplos ---------- */
+.grade {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.exemplo h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.palco {
+  display: grid;
+  place-items: center;
+  min-height: 140px;
+  padding: 1.5rem;
+  background: var(--creme);
+  border-radius: 16px;
+}
+
+/* 1. Botão */
+.demo-botao {
+  font: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--branco);
+  background: var(--vermelho);
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.demo-botao:hover { background: var(--vermelho-escuro); }
+
+/* 2. Link */
+.demo-link {
+  color: var(--vermelho-escuro);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.demo-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* 3. Cartão */
+.demo-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 220px;
+  padding: 1.25rem 1.5rem;
+  background: var(--branco);
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  transform: translateY(0);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.demo-cartao strong { font-family: var(--fonte-titulo); }
+.demo-cartao span { color: #666; font-size: 0.95rem; }
+.demo-cartao:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 24px rgba(0,0,0,.18);
+}
+
+/* 4. Imagem com legenda */
+.demo-imagem {
+  position: relative;
+  width: 220px;
+  height: 140px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.demo-imagem__cor {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--amarelo), var(--vermelho));
+}
+.demo-imagem__legenda {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.6rem 0.9rem;
+  background: rgba(46, 46, 46, 0.85);
+  color: var(--branco);
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.demo-imagem:hover .demo-imagem__legenda { opacity: 1; }
+
+/* 5. Menu */
+.demo-menu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background: var(--branco);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.demo-menu a {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--cinza-escuro);
+  font-weight: 600;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.demo-menu a:hover {
+  border-left-color: var(--amarelo);
+  background: var(--creme);
+}
+
+/* 6. Ícone */
+.demo-icone {
+  display: inline-block;
+  font-size: 3rem;
+  color: var(--amarelo);
+  transition: transform 0.2s;
+}
+.demo-icone:hover { transform: scale(1.4) rotate(-10deg); }
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  background: var(--cinza-escuro);
+  color: #d9d9d9;
+  padding-block: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 640px) {
+  .grade { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-botao, .demo-cartao, .demo-imagem__legenda, .demo-menu a, .demo-icone {
+    transition: none;
+  }
+}

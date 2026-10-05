@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Box Model – demonstração</title>
+  <meta name="description" content="Página de demonstração do box model em CSS: content, padding, border e margin, com exemplos ao vivo e código.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="box-model-demo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container">
+      <a class="voltar" href="apresentacao.html">← Voltar ao início</a>
+      <p class="topo__contexto">CSS na prática</p>
+      <h1>O <code>box model</code></h1>
+      <p class="topo__lead">Todo elemento HTML é uma caixa. Os exemplos abaixo mostram as quatro camadas dessa caixa: conteúdo, espaçamento interno, borda e espaçamento externo.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="explicacao">
+      <h2>O que é</h2>
+      <p>O <strong>box model</strong> é o modelo que o navegador usa para calcular o tamanho e o espaço de cada elemento. Ele tem quatro camadas, de dentro para fora:</p>
+      <ul class="pontos">
+        <li><code>content</code> — o conteúdo em si: texto, imagem etc.</li>
+        <li><code>padding</code> — o espaço entre o conteúdo e a borda.</li>
+        <li><code>border</code> — a borda ao redor do padding.</li>
+        <li><code>margin</code> — o espaço entre a borda e os elementos vizinhos.</li>
+      </ul>
+<pre class="codigo"><code>.caixa {
+  width: 160px;       /* content */
+  padding: 20px;       /* padding  */
+  border: 4px solid;   /* border   */
+  margin: 20px;        /* margin   */
+}</code></pre>
+    </section>
+
+    <!-- Diagrama fixo das camadas -->
+    <section class="diagrama" aria-labelledby="titulo-diagrama">
+      <h2 id="titulo-diagrama">As quatro camadas</h2>
+      <div class="camadas">
+        <div class="camada camada--margin">
+          margin
+          <div class="camada camada--border">
+            border
+            <div class="camada camada--padding">
+              padding
+              <div class="camada camada--content">content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exemplos" aria-labelledby="titulo-exemplos">
+      <h2 id="titulo-exemplos">Exemplos interativos</h2>
+      <p class="exemplos__intro">Use os controles para mudar os valores e ver a caixa reagir na hora.</p>
+
+      <div class="laboratorio">
+        <div class="laboratorio__palco">
+          <div class="caixa-demo" id="caixaDemo">
+            <span>content</span>
+          </div>
+        </div>
+
+        <div class="laboratorio__controles">
+          <label>
+            padding: <output id="valorPadding">20</output>px
+            <input type="range" id="padding" min="0" max="60" value="20">
+          </label>
+          <label>
+            border: <output id="valorBorder">4</output>px
+            <input type="range" id="border" min="0" max="20" value="4">
+          </label>
+          <label>
+            margin: <output id="valorMargin">20</output>px
+            <input type="range" id="margin" min="0" max="60" value="20">
+          </label>
+        </div>
+      </div>
+
+<pre class="codigo"><code>.caixa {
+  padding: <span id="codPadding">20</span>px;
+  border: <span id="codBorder">4</span>px solid #e10000;
+  margin: <span id="codMargin">20</span>px;
+}</code></pre>
+    </section>
+
+    <section class="exemplos" aria-labelledby="titulo-box-sizing">
+      <h2 id="titulo-box-sizing">content-box × border-box</h2>
+      <p class="exemplos__intro">Por padrão, <code>width</code> define só o tamanho do <code>content</code>; padding e borda são somados por fora, e a caixa fica maior do que o <code>width</code> definido. Com <code>box-sizing: border-box</code>, o padding e a borda passam a ser descontados de dentro do <code>width</code>, e a caixa fica exatamente do tamanho definido.</p>
+
+      <ul class="grade">
+        <li class="exemplo">
+          <h3>content-box (padrão)</h3>
+          <div class="palco">
+            <div class="caixa-comparar caixa-comparar--content">200px de width</div>
+          </div>
+<pre class="codigo"><code>.caixa {
+  box-sizing: content-box;
+  width: 200px;
+  padding: 20px;
+  border: 4px solid;
+}
+/* largura final: 248px */</code></pre>
+        </li>
+
+        <li class="exemplo">
+          <h3>border-box</h3>
+          <div class="palco">
+            <div class="caixa-comparar caixa-comparar--border">200px de width</div>
+          </div>
+<pre class="codigo"><code>.caixa {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 4px solid;
+}
+/* largura final: 200px */</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dica">
+      <h2>Boas práticas</h2>
+      <ul>
+        <li>É comum começar o CSS com <code>*, *::before, *::after { box-sizing: border-box; }</code>, para que todo elemento siga a mesma regra de tamanho.</li>
+        <li><code>margin</code> entre blocos pode somar de forma diferente do esperado (margin collapsing); vale testar quando o espaçamento parecer maior do que o definido.</li>
+        <li>Use o inspecionar elemento do navegador (F12) para ver as quatro camadas de qualquer elemento da página.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Exemplo de material de aula · CEEP Assaí</p>
+    </div>
+  </footer>
+
+  <script>
+    const caixa = document.getElementById('caixaDemo');
+    const campos = ['padding', 'border', 'margin'];
+
+    campos.forEach((nome) => {
+      const controle = document.getElementById(nome);
+      const valor = document.getElementById('valor' + nome[0].toUpperCase() + nome.slice(1));
+      const codigo = document.getElementById('cod' + nome[0].toUpperCase() + nome.slice(1));
+
+      controle.addEventListener('input', () => {
+        const px = controle.value + 'px';
+        if (nome === 'border') {
+          caixa.style.borderWidth = px;
+        } else {
+          caixa.style[nome] = px;
+        }
+        valor.textContent = controle.value;
+        codigo.textContent = controle.value;
+      });
+    });
+  </script>
+
+</body>
+</html>

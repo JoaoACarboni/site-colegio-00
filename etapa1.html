@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Etapa 1 (só HTML) – CEEP Assaí – Centro Estadual de Educação Profissional</title>
+  <meta name="description" content="CEEP Professora Maria Lydia Cescato Bomtempo, em Assaí (PR): cursos técnicos integrados ao Ensino Médio e subsequentes.">
+</head>
+<body>
+
+  <p><strong>Etapa 1: somente HTML.</strong> Esta página não tem CSS.</p>
+  <p><a href="apresentacao.html">← Voltar ao início</a></p>
+  <hr>
+
+  <a class="pular" href="#cursos">Ir para os cursos</a>
+
+  <header class="topo">
+    <div class="container topo__linha">
+      <a class="marca" href="#inicio" aria-label="CEEP Assaí – início">
+        <img width="72" height="72" class="marca__logo" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
+        <span class="marca__nome">CEEP Assaí</span>
+      </a>
+
+      <nav class="menu" aria-label="Principal">
+        <a href="#sobre">O colégio</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grade">
+        <div class="hero__texto">
+          <p class="hero__escola">Centro Estadual de Educação Profissional<br>Professora Maria Lydia Cescato Bomtempo</p>
+          <h1>Ensino Médio e profissão, lado a lado.</h1>
+          <p class="hero__lead">Escola pública de Assaí, no Paraná, com nove cursos técnicos para você sair pronto para estudar, trabalhar ou as duas coisas.</p>
+          <div class="hero__acoes">
+            <a class="botao botao--amarelo" href="#cursos">Ver os cursos</a>
+            <a class="botao botao--linha" href="#contato">Como chegar</a>
+          </div>
+        </div>
+
+        <div class="hero__arte">
+          <div class="hero__circulos" aria-hidden="true">
+            <span class="circulo circulo--amarelo"></span>
+            <span class="circulo circulo--cinza"></span>
+            <span class="circulo circulo--vermelho"></span>
+            <span class="circulo circulo--pessego"></span>
+            <span class="ponto ponto--1"></span>
+            <span class="ponto ponto--2"></span>
+            <span class="ponto ponto--3"></span>
+          </div>
+          <img width="300" height="300" class="marca__logo hero__logo" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+      <div class="container sobre__grade">
+        <div>
+          <h2>Uma escola pública para quem quer aprender fazendo</h2>
+          <p>O CEEP Assaí oferece educação profissional pública e gratuita. Nos cursos integrados, você cursa o Ensino Médio e a formação técnica ao mesmo tempo, na mesma escola. Nos cursos subsequentes, quem já concluiu o Ensino Médio faz somente a parte técnica.</p>
+        </div>
+
+        <dl class="fatos">
+          <div>
+            <dt>Cursos técnicos</dt>
+            <dd>9</dd>
+          </div>
+          <div>
+            <dt>Integrado ao Ensino Médio</dt>
+            <dd>Para quem está saindo do Ensino Fundamental</dd>
+          </div>
+          <div>
+            <dt>Subsequente</dt>
+            <dd>Para quem já terminou o Ensino Médio</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- CURSOS -->
+    <section class="cursos" id="cursos">
+      <div class="container">
+        <h2>Cursos técnicos</h2>
+        <p class="cursos__intro">Escolha o curso pela área em que você quer trabalhar. A etiqueta mostra se ele é integrado ao Ensino Médio ou subsequente.</p>
+
+        <ul class="lista">
+          <li class="curso curso--vermelho">
+            <div class="curso__info">
+              <h3>Desenvolvimento de Sistemas</h3>
+              <p>Programação, banco de dados e criação de sites e aplicativos.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+
+          <li class="curso curso--amarelo">
+            <div class="curso__info">
+              <h3>Inteligência Artificial e Dados</h3>
+              <p>Análise de dados, automação e uso de inteligência artificial.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+
+          <li class="curso curso--pessego">
+            <div class="curso__info">
+              <h3>Mecânica</h3>
+              <p>Máquinas, processos de fabricação e manutenção industrial.</p>
+            </div>
+            <span class="etiquetas">
+              <span class="etiqueta etiqueta--integrado">Integrado</span>
+              <span class="etiqueta etiqueta--subsequente">Subsequente</span>
+            </span>
+          </li>
+
+          <li class="curso curso--cinza">
+            <div class="curso__info">
+              <h3>Eletroeletrônica</h3>
+              <p>Circuitos, instalações elétricas e sistemas eletrônicos.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+
+          <li class="curso curso--vermelho">
+            <div class="curso__info">
+              <h3>Edificações</h3>
+              <p>Projetos, materiais e acompanhamento de obras.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+
+          <li class="curso curso--amarelo">
+            <div class="curso__info">
+              <h3>Enfermagem</h3>
+              <p>Cuidado com o paciente e práticas de saúde.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+
+          <li class="curso curso--pessego">
+            <div class="curso__info">
+              <h3>Administração</h3>
+              <p>Gestão de empresas, finanças e rotinas administrativas.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--subsequente">Subsequente</span></span>
+          </li>
+
+          <li class="curso curso--cinza">
+            <div class="curso__info">
+              <h3>Segurança do Trabalho</h3>
+              <p>Prevenção de acidentes e cuidado com a saúde de quem trabalha.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--subsequente">Subsequente</span></span>
+          </li>
+
+          <li class="curso curso--vermelho">
+            <div class="curso__info">
+              <h3>Agronegócio</h3>
+              <p>Produção agropecuária, gestão rural e cadeia do agronegócio.</p>
+            </div>
+            <span class="etiquetas"><span class="etiqueta etiqueta--integrado">Integrado</span></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+      <div class="container contato__grade">
+        <div>
+          <h2>Venha conhecer a escola</h2>
+          <p>Para informações sobre matrícula e vagas, fale com a secretaria.</p>
+        </div>
+
+        <address class="contato__dados">
+          <p><strong>Endereço</strong>R. Edgar Bardal, s/n<br>Assaí, PR, 86220-000</p>
+          <p><strong>Telefone</strong><a href="tel:+554332620925">(43) 3262-0925</a></p>
+          <p><strong>Horário</strong>Atendimento até as 22h50 (confirme o horário na secretaria)</p>
+          <a class="botao botao--amarelo" href="https://www.google.com/maps/search/?api=1&query=CEEP+Maria+Lydia+Cescato+Bomtempo+Assa%C3%AD+PR" target="_blank" rel="noopener">Abrir no mapa</a>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__linha">
+      <div class="marca marca--rodape">
+        <img width="72" height="72" class="marca__logo" src="imagens/logo-colegio.jpg" alt="Logo do CEEP Assaí">
+        <span class="marca__nome">CEEP Assaí</span>
+      </div>
+      <p>Centro Estadual de Educação Profissional Professora Maria Lydia Cescato Bomtempo · Assaí, Paraná</p>
+    </div>
+  </footer>
+
+</body>
+</html>
